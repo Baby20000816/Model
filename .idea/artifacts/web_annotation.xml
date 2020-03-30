@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="web-annotation">
+    <output-path>$PROJECT_DIR$/web-annotation/target/classes/templates</output-path>
+    <root id="root" />
+  </artifact>
+</component>
