@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>主页</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';  /* project id 1432522 */
+            src: url('//at.alicdn.com/t/font_1432522_tus2odw3gb.eot');
+            src: url('//at.alicdn.com/t/font_1432522_tus2odw3gb.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_1432522_tus2odw3gb.woff2') format('woff2'),
+            url('//at.alicdn.com/t/font_1432522_tus2odw3gb.woff') format('woff'),
+            url('//at.alicdn.com/t/font_1432522_tus2odw3gb.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_1432522_tus2odw3gb.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;}
+        .card :hover{
+            box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+            opacity: 0.9;
+            cursor: pointer;
+        }
+        .card-title :hover{
+            color: rgb(0, 161, 214);
+        }
+    </style>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-3" style="width: 1200px;" th:each="rank:${ranks}">
+                <div class="row no-gutters"  style="align-items: center">
+                    <div style="display:flex;width: 100%;justify-content:space-between">
+                        <div style="align-items: center">
+                            <h5 th:text="${rank.id}"></h5>
+                        </div>
+                        <div class="col-md-4" style="justify-content: center">
+                            <img th:src="${rank.pic}" class="card-img" style="width: 100px;height: 150px" alt="" src=""/>
+                        </div>
+                        <div class="col-md-8" >
+                            <div class="card-body" style="display: flex;justify-content: space-between ">
+                                <div style="justify-content: right">
+                                    <h5 class="card-title" th:text="${rank.title}"></h5>
+                                    <p class="card-text"><small class="text-muted" th:text="${rank.info}"></small></p>
+                                    <div style="display: flex;">
+                                        <i class="iconfont">&#xe692;</i>
+                                        <p class="card-text"><small class="text-muted" th:text="${rank.view}"></small></p>
+                                        <i class="iconfont">&#xe665;</i>
+                                        <p class="card-text"><small class="text-muted" th:text="${rank.danmaku}"></small></p>
+                                        <i class="iconfont">&#xe619;</i>
+                                        <p class="card-text"><small class="text-muted" th:text="${rank.follow}"></small></p>
+                                    </div>
+                                </div>
+                                    <div>
+                                        <p class="card-text" th:text="${rank.pts}"></p>
+                                        <p class="card-text" >综合得分</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1851.spring.mybatis.mapper.TeacherMapper">
+    <select id="getTeacher" resultType="Teacher" parameterType="int">
+        SELECT t.teacher_name,t.teacher_id,t.clazz_id
+        FROM t_teacher t
+        WHERE t.teacher_id = #{teacherId}
+    </select>
+    <resultMap id="teacherMap" type="Teacher">
+        <id column="teacher_id" property="teacherId" />
+        <result column="teacher_name" property="teacherName" />
+        <association property="clazz" javaType="Clazz">
+            <id column="clazz_id" property="clazzId" />
+            <result column="clazz_name" property="clazzName" />
+        </association>
+    </resultMap>
+    <select id="getTeacherOneToOne" resultMap="teacherMap" parameterType="int">
+        SELECT t.teacher_id , t.teacher_name , c.clazz_id ,c.clazz_name
+        From t_teacher t,
+             t_clazz c
+        WHERE t.teacher_id = ${teacherId}
+          AND t.clazz_id = c.clazz_id
+    </select>
+</mapper>
