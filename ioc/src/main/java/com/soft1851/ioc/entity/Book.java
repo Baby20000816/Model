@@ -1,6 +1,7 @@
 package com.soft1851.ioc.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
  * @Version 1.0
  **/
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {

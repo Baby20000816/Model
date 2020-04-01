@@ -46,6 +46,11 @@ public interface StudentMapper {
      * 查询所有学生，按生日排序，多对一关联查询学生所在班级信息
      * @return List<Student>
      */
+    List<Student> selectAll1();
+    /**
+     * 查询所有学生
+     * @return List<Student>
+     */
     List<Student> selectAll();
 
     /**
@@ -60,7 +65,7 @@ public interface StudentMapper {
      * @param idList
      * @return
      */
-    int batchDelete(@Param("idList") List<Student> idList);
+    int batchDelete(@Param("idList") List<Integer> idList);
 
     /**
      * 批量修改

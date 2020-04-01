@@ -20,5 +20,6 @@ import lombok.NoArgsConstructor;
 public class MatterDto {
     private String teacherName;
     private String clazzName;
+    private String studentName;
     private Student student;
 }

@@ -111,7 +111,7 @@
             <result column="clazz_name" property="clazzName" />
         </association>
     </resultMap>
-    <select id="selectAll" resultMap="studentMap">
+    <select id="selectAll1" resultMap="studentMap">
         SELECT s.student_id,s.student_name,s.hometown,s.birthday,c.clazz_name
         FROM t_student s
         RIGHT JOIN t_clazz c

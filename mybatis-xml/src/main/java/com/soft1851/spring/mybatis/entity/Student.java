@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author jh_wu
@@ -27,5 +28,5 @@ public class Student {
     private String hometown;
     private LocalDate birthday;
     private Clazz clazz;
-
+    private List<Course> courses;
 }

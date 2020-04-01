@@ -1,8 +1,6 @@
 package com.soft1851.spring.mybatis.mapper;
 
-import com.soft1851.spring.mybatis.dto.MatterDto;
 import com.soft1851.spring.mybatis.entity.Student;
-import com.soft1851.spring.mybatis.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,14 +12,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring-mybatis.xml"})
 public class StudentMapperTest {
     @Resource
     private StudentMapper studentMapper;
-    @Resource
-    private StudentService studentService;
     @Test
     public void batchInsert() {
         List<Student>students = new ArrayList<>();
@@ -42,30 +37,28 @@ public class StudentMapperTest {
     public void insert() {
         Student student = Student.builder()
                 .clazzId(1)
-                .studentName("test")
-                .hometown("江苏南京")
+                .studentName("test-home")
+                .hometown("浙江湖州")
                 .birthday(LocalDate.of(2000,10,10))
                 .build();
         studentMapper.insert(student);
-        System.out.println(student.getStudentId());
-        System.out.println(student.getBirthday());
         System.out.println(student.getHometown());
     }
 
     @Test
     public void delete() {
-        studentMapper.delete(2011);
+        studentMapper.delete(4015);
     }
 
     @Test
     public void update() {
-        Student student = studentMapper.getStudentById(2012);
+        Student student = studentMapper.getStudentById(4014);
         System.out.println(student);
         student.setStudentName("新");
         student.setHometown("上海");
         student.setBirthday(LocalDate.of(1999,11,12));
         studentMapper.update(student);
-        System.out.println(studentMapper.getStudentById(2012));
+        System.out.println(studentMapper.getStudentById(4014));
     }
 
     @Test
@@ -76,27 +69,24 @@ public class StudentMapperTest {
             +","+student.getStudentName()
             +","+student.getHometown()
             +","+student.getBirthday()
-            +","+student.getClazz().getClazzName()
+
             );
         });
     }
 
     @Test
     public void getStudentById() {
-        Student student= studentMapper.getStudentById(2012);
+        Student student= studentMapper.getStudentById(4002);
         System.out.println(student);
     }
 
     @Test
     public void batchDelete() {
-        List<Student>students = new ArrayList<>();
-        for (int i = 0;i<10;i++){
-            Student student = Student.builder()
-                    .studentId(4000+i)
-                    .build();
-          students.add(student);
+        List<Integer> idList = new ArrayList<>();
+        for (int i=0;i<10;i++){
+            idList.add(4000+i);
         }
-        studentMapper.batchDelete(students);
+        System.out.println(studentMapper.batchDelete(idList));
     }
 
     @Test
@@ -114,4 +104,13 @@ public class StudentMapperTest {
         System.out.println(n);
     }
 
+    @Test
+    public void selectLimit() {
+        System.out.println(studentMapper.selectLimit());
+    }
+
+    @Test
+    public void selectLimitByDynamicSql() {
+        System.out.println(studentMapper.selectLimitByDynamicSql(studentMapper.getStudentById(2008)));
+    }
 }
